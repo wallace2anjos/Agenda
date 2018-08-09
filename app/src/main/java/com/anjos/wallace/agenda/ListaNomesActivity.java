@@ -2,6 +2,7 @@ package com.anjos.wallace.agenda;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class ListaNomesActivity extends AppCompatActivity {
@@ -21,12 +22,16 @@ public class ListaNomesActivity extends AppCompatActivity {
         Agora, como precisaremos manipular a lista que declaramos no xml de layout da nossa
         Activity, vamos guardar uma referência para a ListView:
         */
-        ListView listaNomes = findViewById(R.id.lvwNomes);
+        ListView listaNomes = (ListView) findViewById(R.id.lvwNomes);
         /*
         Depois disso, precisaremos criar um ArrayAdapter que ficará responsável por
         converter os nossos alunos, que são do tipo String, para as View que serão exibidas
         pela ListView:
         */
-
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, alunos);
+        /*
+        Para finalizar, só precisamos associar o ArrayAdapter com a ListView:
+        */
+        listaNomes.setAdapter(adapter);
     }
 }
